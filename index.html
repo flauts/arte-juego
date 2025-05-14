@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador: Una Universidad Dentro del Monitor</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/98.css/0.1.20/98.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="desktop" id="desktop">
+        <!-- Desktop Icons -->
+        <div class="desktop-icon" data-window="email">
+            <img src="/api/placeholder/32/32" alt="Email">
+            <div class="desktop-icon-label">Correo</div>
+        </div>
+        
+        <div class="desktop-icon" data-window="todo">
+            <img src="/api/placeholder/32/32" alt="To-Do">
+            <div class="desktop-icon-label">Tareas</div>
+        </div>
+        
+        <div class="desktop-icon" data-window="calendar">
+            <img src="/api/placeholder/32/32" alt="Calendar">
+            <div class="desktop-icon-label">Calendario</div>
+        </div>
+        
+        <div class="desktop-icon" data-window="chat">
+            <img src="/api/placeholder/32/32" alt="Chat">
+            <div class="desktop-icon-label">Mensajes</div>
+        </div>
+        
+        <div class="desktop-icon" data-window="browser">
+            <img src="/api/placeholder/32/32" alt="Browser">
+            <div class="desktop-icon-label">Internet</div>
+        </div>
+        
+        <div class="desktop-icon" data-window="journal">
+            <img src="/api/placeholder/32/32" alt="Journal">
+            <div class="desktop-icon-label">Diario</div>
+        </div>
+        
+        <div class="desktop-icon" data-window="health">
+            <img src="/api/placeholder/32/32" alt="Health">
+            <div class="desktop-icon-label">Bienestar</div>
+        </div>
+        
+        <!-- Email Window -->
+        <div class="window" id="email-window" style="display: none; top: 50px; left: 50px;">
+            <div class="window-header">
+                <div class="window-title">Correo Universitario</div>
+                <div class="window-controls">
+                    <div class="window-control window-minimize">_</div>
+                    <div class="window-control window-maximize">□</div>
+                    <div class="window-control window-close">×</div>
+                </div>
+            </div>
+            <div class="window-content">
+                <div class="email-list">
+                    <div class="email-item unread" data-email="1">
+                        <strong>Dr. Méndez</strong> - Entrega atrasada de Proyecto Final
+                    </div>
+                    <div class="email-item" data-email="2">
+                        <strong>Biblioteca Central</strong> - Recordatorio: Libros pendientes
+                    </div>
+                    <div class="email-item" data-email="3">
+                        <strong>Secretaría Académica</strong> - Inscripción a exámenes
+                    </div>
+                    <div class="email-item" data-email="4">
+                        <strong>Centro de Salud</strong> - Confirmación cita psicología
+                    </div>
+                    <div class="email-item" data-email="5">
+                        <strong>Grupo de Estudio</strong> - Reunión de mañana
+                    </div>
+                </div>
+                <div class="email-preview" id="email-preview">
+                    Selecciona un correo para ver su contenido.
+                </div>
+            </div>
+        </div>
+        
+        <!-- To-Do Window -->
+        <div class="window" id="todo-window" style="display: none; top: 80px; left: 120px;">
+            <div class="window-header">
+                <div class="window-title">Lista de Tareas</div>
+                <div class="window-controls">
+                    <div class="window-control window-minimize">_</div>
+                    <div class="window-control window-maximize">□</div>
+                    <div class="window-control window-close">×</div>
+                </div>
+            </div>
+            <div class="window-content">
+                <div class="todo-list">
+                    <div class="todo-item">
+                        <input type="checkbox" id="todo1">
+                        <label for="todo1" class="todo-urgent">Entregar proyecto final (ATRASADO)</label>
+                    </div>
+                    <div class="todo-item">
+                        <input type="checkbox" id="todo2">
+                        <label for="todo2" class="todo-today">Estudiar para examen de Estadística (MAÑANA)</label>
+                    </div>
+                    <div class="todo-item">
+                        <input type="checkbox" id="todo3">
+                        <label for="todo3" class="todo-today">Asistir a cita con psicólogo (HOY 15:00)</label>
+                    </div>
+                    <div class="todo-item">
+                        <input type="checkbox" id="todo4">
+                        <label for="todo4" class="todo-upcoming">Devolver libros a biblioteca (Esta semana)</label>
+                    </div>
+                    <div class="todo-item">
+                        <input type="checkbox" id="todo5">
+                        <label for="todo5" class="todo-upcoming">Inscribirse a exámenes finales</label>
+                    </div>
+                    <div class="todo-item">
+                        <input type="checkbox" id="todo6" checked>
+                        <label for="todo6" class="todo-completed">Enviar correo al profesor</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Calendar Window -->
+        <div class="window" id="calendar-window" style="display: none; top: 100px; left: 150px;">
+            <div class="window-header">
+                <div class="window-title">Calendario</div>
+                <div class="window-controls">
+                    <div class="window-control window-minimize">_</div>
+                    <div class="window-control window-maximize">□</div>
+                    <div class="window-control window-close">×</div>
+                </div>
+            </div>
+            <div class="window-content">
+                <div class="calendar-header">
+                    <button class="prev-month">◀</button>
+                    <div class="current-month">Mayo 2025</div>
+                    <button class="next-month">▶</button>
+                </div>
+                <div class="calendar-grid">
+                    <div class="calendar-day">L</div>
+                    <div class="calendar-day">M</div>
+                    <div class="calendar-day">X</div>
+                    <div class="calendar-day">J</div>
+                    <div class="calendar-day">V</div>
+                    <div class="calendar-day">S</div>
+                    <div class="calendar-day">D</div>
+                    
+                    <div class="calendar-day">28</div>
+                    <div class="calendar-day">29</div>
+                    <div class="calendar-day">30</div>
+                    <div class="calendar-day">1</div>
+                    <div class="calendar-day">2</div>
+                    <div class="calendar-day">3</div>
+                    <div class="calendar-day">4</div>
+                    
+                    <div class="calendar-day">5</div>
+                    <div class="calendar-day">6</div>
+                    <div class="calendar-day">7</div>
+                    <div class="calendar-day">8</div>
+                    <div class="calendar-day">9</div>
+                    <div class="calendar-day">10</div>
+                    <div class="calendar-day">11</div>
+                    
+                    <div class="calendar-day has-event" id="current-day">12</div>
+                    <div class="calendar-day has-event">13</div>
+                    <div class="calendar-day">14</div>
+                    <div class="calendar-day has-event">15</div>
+                    <div class="calendar-day">16</div>
+                    <div class="calendar-day">17</div>
+                    <div class="calendar-day">18</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Chat Window -->
+        <div class="window" id="chat-window" style="display: none; top: 120px; left: 180px;">
+            <div class="window-header">
+                <div class="window-title">Mensajes - Grupo de Estudio</div>
+                <div class="window-controls">
+                    <div class="window-control window-minimize">_</div>
+                    <div class="window-control window-maximize">□</div>
+                    <div class="window-control window-close">×</div>
+                </div>
+            </div>
+            <div class="window-content">
+                <div class="chat-container">
+                    <div class="chat-messages">
+                        <div class="message message-received">
+                            <div class="message-sender">Lucía</div>
+                            <div class="message-content">Alguien tiene las respuestas del ejercicio 5? Estoy atascada 😫</div>
+                            <div class="message-time">10:24</div>
+                        </div>
+                        <div class="message message-sent">
+                            <div class="message-content">Yo tampoco pude terminarlo, este semestre está siendo demasiado</div>
+                            <div class="message-time">10:30</div>
+                        </div>
+                        <div class="message message-received">
+                            <div class="message-sender">Diego</div>
+                            <div class="message-content">Nos reunimos para estudiar esta tarde? A las 4 en la biblioteca?</div>
+                            <div class="message-time">10:45</div>
+                        </div>
+                        <div class="message message-received">
+                            <div class="message-sender">Sara</div>
+                            <div class="message-content">Yo no puedo, tengo que trabajar 😔 Se me están acumulando los deberes</div>
+                            <div class="message-time">10:50</div>
+                        </div>
+                        <div class="message message-received">
+                            <div class="message-sender">Lucía</div>
+                            <div class="message-content">Alguien más tiene problemas para dormir antes de los exámenes?</div>
+                            <div class="message-time">11:02</div>
+                        </div>
+                    </div>
+                    <div class="chat-input-container">
+                        <input type="text" class="chat-input" placeholder="Escribe un mensaje...">
+                        <button class="chat-send">Enviar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Browser Window -->
+        <div class="window" id="browser-window" style="display: none; top: 140px; left: 210px; width: 600px; height: 400px;">
+            <div class="window-header">
+                <div class="window-title">Internet Explorer</div>
+                <div class="window-controls">
+                    <div class="window-control window-minimize">_</div>
+                    <div class="window-control window-maximize">□</div>
+                    <div class="window-control window-close">×</div>
+                </div>
+            </div>
+            <div class="window-content">
+                <div class="browser-container">
+                    <div class="browser-toolbar">
+                        <button class="browser-back">◀</button>
+                        <button class="browser-forward">▶</button>
+                        <button class="browser-refresh">↻</button>
+                        <div class="browser-url">http://www.universidad.edu/plataforma</div>
+                        <button class="browser-go">Ir</button>
+                    </div>
+                    <div class="browser-content">
+                        <h2>Universidad Nacional - Plataforma Virtual</h2>
+                        <p>Bienvenido a la plataforma de cursos, estudiante.</p>
+                        <hr>
+                        <h3>Avisos importantes:</h3>
+                        <p><b>¡Atención!</b> Los exámenes finales comienzan el 2 de junio. Revisa tu calendario académico.</p>
+                        <p><b>Nuevo:</b> El Centro de Bienestar Estudiantil ofrece sesiones de manejo de estrés. <a href="#">Más información</a></p>
+                        <p><b>Recordatorio:</b> La fecha límite para solicitar prórroga en entregas es el 15 de mayo.</p>
+                        <hr>
+                        <h3>Materias activas:</h3>
+                        <ul>
+                            <li>Estadística Aplicada - <span style="color:red;">1 tarea pendiente</span></li>
+                            <li>Metodología de Investigación - <span style="color:red;">Proyecto final atrasado</span></li>
+                            <li>Economía II - Al día</li>
+                            <li>Programación Avanzada - <span style="color:red;">Examen próximo</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Journal Window -->
+        <div class="window" id="journal-window" style="display: none; top: 160px; left: 240px;">
+            <div class="window-header">
+                <div class="window-title">Diario Personal</div>
+                <div class="window-controls">
+                    <div class="window-control window-minimize">_</div>
+                    <div class="window-control window-maximize">□</div>
+                    <div class="window-control window-close">×</div>
+                </div>
+            </div>
+            <div class="window-content">
+                <div class="journal-container">
+                    <div class="journal-entry">
+                        <p><b>12 de mayo, 2025</b></p>
+                        <p>Querido diario,</p>
+                        <p>Otra vez me quedé dormido después de estudiar hasta las 3 AM. No logro ponerme al día con todas las materias. La cita con el psicólogo es hoy, pero estoy considerando cancelarla para avanzar con el proyecto de Metodología... aunque ya está atrasado.</p>
+                        <p>Me siento abrumado. Mis padres siguen preguntando por mis calificaciones, pero no tengo el valor de decirles que estoy a punto de reprobar dos materias. No sé cómo lo voy a lograr este semestre.</p>
+                        <p>Lo bueno es que el grupo de estudio ha sido un apoyo, aunque todos estamos igual de estresados. Sara menciona que también está teniendo problemas para dormir.</p>
+                        <p>A veces me pregunto si la universidad realmente vale la pena...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Health Window -->
+        <div class="window" id="health-window" style="display: none; top: 180px; left: 270px;">
+            <div class="window-header">
+                <div class="window-title">Monitor de Bienestar</div>
+                <div class="window-controls">
+                    <div class="window-control window-minimize">_</div>
+                    <div class="window-control window-maximize">□</div>
+                    <div class="window-control window-close">×</div>
+                </div>
+            </div>
+            <div class="window-content">
+                <h3>Estado de Bienestar Actual</h3>
+                <div class="health-meters">
+                    <div class="meter-container">
+                        <div class="meter-label">Energía:</div>
+                        <div class="meter">
+                            <div class="meter-fill warning" style="width: 40%;"></div>
+                        </div>
+                    </div>
+                    <div class="meter-container">
+                        <div class="meter-label">Ánimo:</div>
+                        <div class="meter">
+                            <div class="meter-fill warning" style="width: 45%;"></div>
+                        </div>
+                    </div>
+                    <div class="meter-container">
+                        <div class="meter-label">Concentración:</div>
+                        <div class="meter">
+                            <div class="meter-fill danger" style="width: 30%;"></div>
+                        </div>
+                    </div>
+                    <div class="meter-container">
+                        <div class="meter-label">Descanso:</div>
+                        <div class="meter">
+                            <div class="meter-fill danger" style="width: 25%;"></div>
+                        </div>
+                    </div>
+                    <div class="meter-container">
+                        <div class="meter-label">Social:</div>
+                        <div class="meter">
+                            <div class="meter-fill warning" style="width: 50%;"></div>
+                        </div>
+                    </div>
+                </div>
+                <h3>Recomendaciones:</h3>
+                <ul>
+                    <li>Tu nivel de descanso está bajo. Considera dormir al menos 7 horas.</li>
+                    <li>Tu concentración está disminuyendo. Toma descansos breves cada hora.</li>
+                    <li>Recuerda asistir a tu cita con el psicólogo hoy a las 15:00.</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Thought Bubble -->
+        <div class="thought-bubble" id="thought-bubble"></div>
+        
+        <!-- Notification -->
+        <div class="notification" id="notification">
+            <div id="notification-content"></div>
+            <button class="notification-close">Cerrar</button>
+        </div>
+        
+        <!-- Taskbar -->
+        <div class="taskbar">
+            <div class="start-button">
+                <img src="/api/placeholder/16/16" alt="Start">
+                Inicio
+            </div>
+            <div class="taskbar-items"></div>
+            <div class="clock">12:30 PM</div>
+        </div>
+    </div>
+    
+    <!-- JavaScript -->
+    <script src="js/data.js"></script>
+    <script src="js/windows.js"></script>
+    <script src="js/email.js"></script>
+    <script src="js/todo.js"></script>
+    <script src="js/chat.js"></script>
+    <script src="js/browser.js"></script>
+    <script src="js/journal.js"></script>
+    <script src="js/health.js"></script>
+    <script src="js/notifications.js"></script>
+    <script src="js/game.js"></script>
+</body>
+</html>

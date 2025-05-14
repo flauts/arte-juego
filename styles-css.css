@@ -1,0 +1,433 @@
+body {
+    margin: 0;
+    overflow: hidden;
+    background: #008080;
+    font-family: "MS Sans Serif", sans-serif;
+    user-select: none;
+    height: 100vh;
+    cursor: default;
+}
+
+.desktop {
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    padding: 5px;
+}
+
+.taskbar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 28px;
+    background: silver;
+    border-top: 1px solid #fff;
+    display: flex;
+    z-index: 1000;
+}
+
+.start-button {
+    display: flex;
+    align-items: center;
+    padding: 0 5px;
+    margin: 2px;
+    height: 22px;
+    font-weight: bold;
+    background: silver;
+    border: 1px outset #fff;
+}
+
+.start-button img {
+    margin-right: 2px;
+    width: 16px;
+    height: 16px;
+}
+
+.start-button:active {
+    border: 1px inset #fff;
+}
+
+.clock {
+    margin-left: auto;
+    padding: 5px;
+    border-left: 1px solid #888;
+}
+
+.window {
+    position: absolute;
+    width: 500px;
+    height: 300px;
+    background: silver;
+    border: 1px outset #fff;
+    box-shadow: 1px 1px 0 black;
+    display: flex;
+    flex-direction: column;
+    z-index: 10;
+}
+
+.window.active {
+    z-index: 100;
+}
+
+.window-header {
+    height: 18px;
+    background: #000080;
+    color: white;
+    display: flex;
+    align-items: center;
+    padding: 0 2px;
+    cursor: move;
+}
+
+.window-title {
+    flex-grow: 1;
+    font-weight: bold;
+    font-size: 12px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.window-controls {
+    display: flex;
+}
+
+.window-control {
+    width: 16px;
+    height: 14px;
+    margin-left: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: silver;
+    border: 1px outset white;
+    font-size: 10px;
+}
+
+.window-content {
+    flex-grow: 1;
+    padding: 10px;
+    overflow: auto;
+    background: white;
+    margin: 2px;
+    position: relative;
+}
+
+.desktop-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 70px;
+    margin: 10px;
+    cursor: pointer;
+}
+
+.desktop-icon img {
+    width: 32px;
+    height: 32px;
+    margin-bottom: 5px;
+}
+
+.desktop-icon-label {
+    color: white;
+    text-align: center;
+    font-size: 12px;
+    text-shadow: 1px 1px 1px black;
+}
+
+.popup {
+    position: absolute;
+    width: 300px;
+    background: silver;
+    border: 1px outset #fff;
+    box-shadow: 1px 1px 0 black;
+    z-index: 1000;
+    display: none;
+}
+
+.notification {
+    position: absolute;
+    bottom: 40px;
+    right: 10px;
+    width: 300px;
+    background: silver;
+    border: 1px outset #fff;
+    box-shadow: 1px 1px 0 black;
+    z-index: 1000;
+    padding: 10px;
+    display: none;
+}
+
+/* Email client styles */
+.email-list {
+    border: 1px inset #fff;
+    height: 150px;
+    overflow-y: auto;
+    margin-bottom: 10px;
+    background: white;
+}
+
+.email-item {
+    padding: 3px 5px;
+    border-bottom: 1px solid #ddd;
+    cursor: pointer;
+}
+
+.email-item:hover {
+    background: #e0e0e0;
+}
+
+.email-item.unread {
+    font-weight: bold;
+}
+
+.email-preview {
+    border: 1px inset #fff;
+    padding: 5px;
+    height: 120px;
+    overflow-y: auto;
+    background: white;
+}
+
+/* To-do app styles */
+.todo-list {
+    border: 1px inset #fff;
+    height: 200px;
+    overflow-y: auto;
+    background: white;
+}
+
+.todo-item {
+    padding: 5px;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    align-items: center;
+}
+
+.todo-item input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+.todo-urgent {
+    color: red;
+}
+
+.todo-today {
+    color: #8b0000;
+}
+
+.todo-upcoming {
+    color: #4682b4;
+}
+
+.todo-completed {
+    text-decoration: line-through;
+    color: gray;
+}
+
+/* Calendar styles */
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-gap: 2px;
+}
+
+.calendar-day {
+    height: 30px;
+    border: 1px solid #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.calendar-day.has-event::after {
+    content: "";
+    position: absolute;
+    bottom: 2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 4px;
+    background: red;
+    border-radius: 50%;
+}
+
+/* Chat window styles */
+.chat-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.chat-messages {
+    flex-grow: 1;
+    border: 1px inset #fff;
+    padding: 5px;
+    overflow-y: auto;
+    background: white;
+    margin-bottom: 10px;
+}
+
+.chat-input-container {
+    display: flex;
+}
+
+.chat-input {
+    flex-grow: 1;
+    border: 1px inset #fff;
+    padding: 3px;
+    margin-right: 5px;
+}
+
+.message {
+    margin-bottom: 8px;
+    max-width: 80%;
+}
+
+.message-sent {
+    margin-left: auto;
+    background: #e0e0e0;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.message-received {
+    margin-right: auto;
+    background: #f0f0f0;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.message-time {
+    font-size: 10px;
+    color: #888;
+    text-align: right;
+}
+
+.message-sender {
+    font-weight: bold;
+    margin-bottom: 2px;
+}
+
+/* Browser styles */
+.browser-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.browser-toolbar {
+    display: flex;
+    padding: 5px;
+    background: silver;
+    border-bottom: 1px solid #888;
+}
+
+.browser-url {
+    flex-grow: 1;
+    border: 1px inset #fff;
+    padding: 2px 5px;
+    margin: 0 5px;
+}
+
+.browser-content {
+    flex-grow: 1;
+    border: 1px inset #fff;
+    background: white;
+    overflow: auto;
+    padding: 10px;
+}
+
+/* Journal styles */
+.journal-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.journal-entry {
+    border: 1px inset #fff;
+    background: white;
+    padding: 10px;
+    height: 100%;
+    font-family: "Comic Sans MS", cursive;
+    font-size: 14px;
+    overflow-y: auto;
+}
+
+/* Health meter styles */
+.health-meters {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.meter-container {
+    display: flex;
+    align-items: center;
+}
+
+.meter-label {
+    width: 100px;
+}
+
+.meter {
+    height: 15px;
+    flex-grow: 1;
+    border: 1px inset #fff;
+    background: #eee;
+}
+
+.meter-fill {
+    height: 100%;
+    width: 70%;
+    background: #00aa00;
+}
+
+.meter-fill.warning {
+    background: #ffcc00;
+}
+
+.meter-fill.danger {
+    background: #ff0000;
+}
+
+/* Thought bubble styles */
+.thought-bubble {
+    position: absolute;
+    background: #ffffcc;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+    max-width: 200px;
+    font-size: 12px;
+    font-style: italic;
+    color: #555;
+    z-index: 1000;
+    display: none;
+}
+
+.thought-bubble::before {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: #ffffcc;
+    border-right: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    top: -10px;
+    left: 20px;
+    transform: rotate(45deg);
+    z-index: -1;
+}
